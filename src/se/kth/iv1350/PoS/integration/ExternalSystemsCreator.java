@@ -6,8 +6,17 @@ public class ExternalSystemsCreator {
 
 	private Printer printer;
 
-	public ExternalSystemsCreator ExternalSystemsCreator() {
-		return null;
+	public ExternalSystemsCreator() {
+		printer = new Printer();
+		externalSystems = new ExternalSystems();
+	}
+	
+	public Printer getPrinter() {
+		return printer;
+	}
+	
+	public ExternalSystems getExternalSystems() {
+		return externalSystems;
 	}
 
 }

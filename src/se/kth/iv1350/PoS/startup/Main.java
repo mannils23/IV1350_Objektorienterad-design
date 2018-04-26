@@ -14,20 +14,11 @@ import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
  *
  */
 public class Main {
-
+	
 	private View view;
-
 	private Controller controller;
-
-	private CatalogCreator catalogCreator;
-
-	private Printer printer;
-
-	private ExternalSystems externalSystems;
-
-	private Taxes taxes;
-
 	private ExternalSystemsCreator externalSystemsCreator;
+	private CatalogCreator catalogCreator;
 
 	/**
 	 * Starts the application
@@ -36,8 +27,10 @@ public class Main {
 	 */
 	public void main(String[] args) {
 		externalSystemsCreator = new ExternalSystemsCreator();
+		catalogCreator = new CatalogCreator();
+		controller = new Controller(catalogCreator,externalSystemsCreator);
+		view = new View(controller);
 		
-
 	}
 
 }

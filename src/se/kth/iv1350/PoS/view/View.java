@@ -10,8 +10,13 @@ import se.kth.iv1350.PoS.controller.Controller;
 public class View {
 
 	private Controller controller;
+	
 
-	public void View(Controller contr) {
+/**
+ * Interacts with controller as an external system.
+ * @param contr The <code>Controller</code> object to interact with.
+ */
+	public View(Controller contr) {
 
 	}
 

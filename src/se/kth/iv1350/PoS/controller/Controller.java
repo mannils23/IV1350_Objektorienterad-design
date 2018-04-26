@@ -30,8 +30,8 @@ public class Controller {
 
 	private CustomerDiscounts customerDiscounts;
 
-	public Controller Controller(CatalogCreator catalogs, ExternalSystemsCreator externalSystems) {
-		return null;
+	public Controller(CatalogCreator catalogs, ExternalSystemsCreator externalSystems) {
+		
 	}
 
 	public SaleDTO enterItem(ItemIdentifierDTO itemIdentifier) {
