@@ -1,13 +1,24 @@
 package se.kth.iv1350.PoS.integration;
 
+/**
+ * Handles interctions with the external system: printer.
+ * Placeholder class. No implementaion.
+ * 
+ *
+ */
 public class Printer {
-
-	public Printer Printer() {
-		return null;
+	
+/**
+ * Creates the printer placeholder object.
+ */
+	public Printer() {
+		
 	}
-
+/**
+ * Prints information from <code>Receipt</code> object.
+ */
 	public void printReceipt() {
-
+		return;
 	}
 
 }

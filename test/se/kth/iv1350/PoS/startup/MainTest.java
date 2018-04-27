@@ -1,13 +1,14 @@
-package startup;
+package se.kth.iv1350.PoS.startup;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class MainTest {
+public class MainTest {
 
 	@Test
-	void test() {
+	public void testMain() {
+		
 		
 	}
 
