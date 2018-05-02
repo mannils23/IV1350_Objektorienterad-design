@@ -6,8 +6,18 @@ public class CatalogCreator {
 
 	private CustomerDiscounts customerDiscounts;
 
-	public CatalogCreator CatalogCreator() {
-		return null;
+	public CatalogCreator() {
+		itemCatalog = new ItemCatalog();
+		customerDiscounts = new CustomerDiscounts();
+	}
+	
+	public ItemCatalog getItemCatalog() {
+		return itemCatalog;
+	}
+	
+	public CustomerDiscounts getCustomerDiscounts() {
+		return customerDiscounts;
 	}
 
 }
+

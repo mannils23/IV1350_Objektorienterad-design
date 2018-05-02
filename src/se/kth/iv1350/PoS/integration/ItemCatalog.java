@@ -6,8 +6,8 @@ public class ItemCatalog {
 
 	private ItemInformation itemInformation;
 
-	public ItemCatalog ItemCatalog() {
-		return null;
+	public ItemCatalog() {
+		
 	}
 
 	public ItemInformation getItemInformation(ItemIdentifierDTO itemIdentifier) {

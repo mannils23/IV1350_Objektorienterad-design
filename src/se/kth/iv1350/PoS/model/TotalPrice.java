@@ -14,8 +14,13 @@ public class TotalPrice {
 
 	private PriceModifiers priceModifiers;
 
-	public TotalPrice TotalPrice(int runningTotal) {
-		return null;
+	public TotalPrice(Amount runningTotal) {
+		amount = runningTotal;
+	}
+	
+	public void addPriceModifiers(PriceModifiers priceModifiers) {
+		taxes = priceModifiers.getTaxes();
+		amount.addAmount(taxes.getAmount());
 	}
 
 }

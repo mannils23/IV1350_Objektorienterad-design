@@ -14,10 +14,10 @@ public class View {
 
 /**
  * Interacts with controller as an external system.
- * @param contr The <code>Controller</code> object to interact with.
+ * @param controller The <code>Controller</code> object to interact with.
  */
-	public View(Controller contr) {
-
+	public View(Controller controller) {
+		this.controller = controller;
 	}
 
 }

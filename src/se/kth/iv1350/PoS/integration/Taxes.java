@@ -1,5 +1,7 @@
 package se.kth.iv1350.PoS.integration;
 
+import se.kth.iv1350.PoS.model.Amount;
+
 public class Taxes {
 
 	private int taxRate;
@@ -8,8 +10,8 @@ public class Taxes {
 		return null;
 	}
 
-	public int getTaxes() {
-		return 0;
+	public Amount getAmount() {
+		return null;
 	}
 
 }

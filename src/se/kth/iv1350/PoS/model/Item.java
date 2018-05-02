@@ -10,8 +10,8 @@ public class Item {
 
 	private Amount price;
 
-	public Item Item(ItemInformation itemInfo) {
-		return null;
+	public Item(ItemInformation itemInfo) {
+		
 	}
 
 }

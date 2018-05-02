@@ -9,13 +9,14 @@ import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
 class ExternalSystemsCreatorTest {
 
 	@Test
-	public void test() {
+	public void testFields() {
 		ExternalSystemsCreator test = new ExternalSystemsCreator();
+		assertNotNull("no externalSystems created", test.getExternalSystems());
 		assertTrue("created externalSystems is wrong type", (test.getExternalSystems() instanceof ExternalSystems) );
-		assertFalse("no externalSystems created", test.getExternalSystems() == null);
 		
+		
+		assertNotNull("no printer created", test.getPrinter());
 		assertTrue("created printer is wrong type", (test.getPrinter() instanceof Printer) );
-		assertFalse("no printer created", test.getPrinter() == null);
 	}
 
 }
