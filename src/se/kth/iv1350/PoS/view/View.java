@@ -21,7 +21,9 @@ public class View {
 	public View(Controller controller) {
 		this.controller = controller;
 	}
-	
+	/**
+	 * Runs simulated sale in the system as placeholder for the real view layer.
+	 */
 	public void trySale() {
 		controller.startNewSale();
 		saleInfo = controller.enterItem(createID(0));
@@ -29,7 +31,7 @@ public class View {
 		
 	}
 	
-	public ItemIdentifierDTO createID(int value) {
+	private ItemIdentifierDTO createID(int value) {
 		ItemIdentifierDTO itemInfo = new ItemIdentifierDTO(value);
 		return itemInfo;
 	}

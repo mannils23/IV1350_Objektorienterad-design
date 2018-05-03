@@ -11,7 +11,7 @@ import se.kth.iv1350.PoS.model.*;
 public class ItemCatalog {
 
 	private List<Item> itemList;
-
+	
 	/**
 	 * Creates an instance of ItemCatalog.
 	 * When created, fills with <code>Item</code> objects.
@@ -21,7 +21,8 @@ public class ItemCatalog {
 		for(int i = 0; i < 20; i++) {
 			ItemIdentifierDTO identifier = new ItemIdentifierDTO(i);
 			Amount price = new Amount(i + 1);
-			itemList.add(new Item(identifier, "item" + i, price));
+			Item itemToAdd = new Item(identifier, "item" + i, price);
+			addItem(itemToAdd);
 		}
 	}
 	/**
@@ -30,15 +31,27 @@ public class ItemCatalog {
 	 * @param itemIdentifier Specifies what <code>Item</code> to get.
 	 * @return The <code>Item</code> specified.
 	 */
-	public Item getItem(ItemIdentifierDTO itemIdentifier) {
+	public Item getItem(ItemIdentifierDTO itemToFindID) {
 		for(int i = 0; i < itemList.size(); i++) {
-			ItemIdentifierDTO itemToFindID = itemList.get(i).getIdentifier();
-			if(itemToFindID.getIdentifierValue() == itemIdentifier.getIdentifierValue()) {
-				return itemList.get(i);
+			Item itemInList = itemList.get(i);
+			if(hasSameID(itemInList, itemToFindID)) {
+				return itemInList;
 			}
 		}
 		Item nullFieldsItem = new Item();
 		return nullFieldsItem;
+	}
+	/**
+	 * Adds an <code>Item</code> to the catalog.
+	 * @param item The <code>Item</code> to add.
+	 */
+	public void addItem(Item item) {
+		itemList.add(item);
+	}
+	
+	private boolean hasSameID(Item itemInList, ItemIdentifierDTO itemToFindID) {
+		ItemIdentifierDTO itemInListID = itemInList.getIdentifier();
+		return itemInListID.getIdentifierValue() == itemToFindID.getIdentifierValue();
 	}
 
 }

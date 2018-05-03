@@ -1,12 +1,8 @@
 package se.kth.iv1350.PoS.startup;
 
 import se.kth.iv1350.PoS.controller.Controller;
-import se.kth.iv1350.PoS.integration.CatalogCreator;
-import se.kth.iv1350.PoS.integration.Printer;
-import se.kth.iv1350.PoS.integration.ExternalSystems;
-import se.kth.iv1350.PoS.integration.Taxes;
 import se.kth.iv1350.PoS.view.View;
-import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
+import se.kth.iv1350.PoS.integration.*;
 
 /**
  * Holds the <code>main</code> method. Performs all startup of the application.
@@ -30,6 +26,8 @@ public class Main {
 		catalogCreator = new CatalogCreator();
 		controller = new Controller(catalogCreator,externalSystemsCreator);
 		view = new View(controller);
+		
+		view.trySale();
 		
 	}
 

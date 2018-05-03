@@ -17,7 +17,7 @@ public class CatalogCreator {
 	}
 	
 	/**
-	 * Returns this objects' <code>ItemCatalog</code>.
+	 * Returns the {@link ItemCatalog}.
 	 * @return The <code>ItemCatalog</code>.
 	 */
 	public ItemCatalog getItemCatalog() {

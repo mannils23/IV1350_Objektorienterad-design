@@ -50,23 +50,39 @@ public class Sale {
 	 * @return The <code>SaleDTO</code> with sale information.
 	 */
 	public SaleDTO getSaleInformation() {
-		SaleDTO saleInfo = new SaleDTO();
+		SaleDTO saleInfo = new SaleDTO(this);
 		return saleInfo;
 	}
-
+	/**
+	 * Returns the total price, as an object of {@link TotalPrice}, of a {@link Sale}.
+	 * @return The <code>TotalPrice</code> of the current <code>Sale</code>.
+	 */
 	public TotalPrice getTotalPrice() {
 		TotalPrice totalPrice = new TotalPrice(runningTotal);
 		totalPrice.applyTaxes(taxes);
 		return totalPrice;
 	}
-
+	/**
+	 * Pays the current {@link Sale} with a {@link PaymentDTO};
+	 * @param payment The <code>PaymentDTO</code> representing the payment.
+	 */
 	public void pay(PaymentDTO payment) {
 		this.payment = payment;
 		return;
 	}
-
+	/**
+	 * Returns the {@link Change} of the current {@link Sale}.
+	 * @return The <code>Change</code> representing the change of the <code>Sale</code>.
+	 */
 	public Change getChange() {
 		change = new Change(payment, totalPrice);
 		return change;
+	}
+	/**
+	 * Returns the payment information as a {@link PaymentDTO}
+	 * @return The <code>PaymentDTO</code> representing the payment for the <code>Sale</code>.
+	 */
+	public PaymentDTO getPayment() {
+		return payment;
 	}
 }

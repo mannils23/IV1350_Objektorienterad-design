@@ -16,8 +16,6 @@ public class Controller {
 	
 	private Printer printer;
 
-	private Item item;
-
 	private Sale sale;
 
 	private Receipt receipt;
