@@ -1,17 +1,11 @@
 package se.kth.iv1350.PoS.integration;
 
-import se.kth.iv1350.PoS.model.Amount;
-
 public class Taxes {
 
-	private int taxRate;
+	private static final double taxRate = 0.3;
 
-	public Taxes Taxes() {
-		return null;
-	}
-
-	public Amount getAmount() {
-		return null;
+	public double getTaxRate() {
+		return taxRate;
 	}
 
 }

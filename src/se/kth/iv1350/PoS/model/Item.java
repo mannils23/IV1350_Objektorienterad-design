@@ -1,17 +1,27 @@
 package se.kth.iv1350.PoS.model;
 
-import se.kth.iv1350.PoS.integration.ItemInformation;
-
 public class Item {
+	
+	private final ItemIdentifierDTO identifier;
 
-	private int quantity;
+	private final String description;
 
-	private String description;
+	private final Amount price;
 
-	private Amount price;
-
-	public Item(ItemInformation itemInfo) {
-		
+	public Item(ItemIdentifierDTO identifier, String description, Amount price) {
+		this.identifier = identifier;
+		this.description = description;
+		this.price = price;
+	}
+	
+	public Item() {
+		identifier = null;
+		description = null;
+		price = null;
+	}
+	
+	public ItemIdentifierDTO getIdentifier() {
+		return identifier;
 	}
 
 }

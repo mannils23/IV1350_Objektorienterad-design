@@ -3,12 +3,12 @@ public class PaymentDTO {
 
 	private Amount paidAmount;
 
-	public PaymentDTO Payment(Amount paidAmount) {
-		return null;
+	public PaymentDTO(Amount paidAmount) {
+		this.paidAmount = paidAmount;
 	}
 
 	public Amount getAmount() {
-		return null;
+		return paidAmount;
 	}
 
 }

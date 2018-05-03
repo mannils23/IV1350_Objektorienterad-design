@@ -18,6 +18,7 @@ public class Printer {
  * Prints information from <code>Receipt</code> object.
  */
 	public void printReceipt() {
+		System.out.println("Receipt printed.");
 		return;
 	}
 

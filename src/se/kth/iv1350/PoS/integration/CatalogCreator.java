@@ -1,23 +1,28 @@
 package se.kth.iv1350.PoS.integration;
 
+/**
+ * Creates the classes responsible for handling external catalogs.
+ * @author Marcus
+ *
+ */
 public class CatalogCreator {
 
 	private ItemCatalog itemCatalog;
 
-	private CustomerDiscounts customerDiscounts;
-
+	/**
+	 * Creates a new instance with classes handling external catalogs.
+	 */
 	public CatalogCreator() {
 		itemCatalog = new ItemCatalog();
-		customerDiscounts = new CustomerDiscounts();
 	}
 	
+	/**
+	 * Returns this objects' <code>ItemCatalog</code>.
+	 * @return The <code>ItemCatalog</code>.
+	 */
 	public ItemCatalog getItemCatalog() {
 		return itemCatalog;
 	}
 	
-	public CustomerDiscounts getCustomerDiscounts() {
-		return customerDiscounts;
-	}
-
 }
 

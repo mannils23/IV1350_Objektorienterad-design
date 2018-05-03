@@ -1,6 +1,5 @@
 package se.kth.iv1350.PoS.model;
 
-import se.kth.iv1350.PoS.integration.Discount;
 import se.kth.iv1350.PoS.integration.Printer;
 
 public class Receipt {
@@ -8,8 +7,6 @@ public class Receipt {
 	private int numberOfItems;
 
 	private Amount totalPrice;
-
-	private Discount discounts;
 
 	private Amount change;
 
@@ -21,8 +18,8 @@ public class Receipt {
 
 	private Printer printer;
 
-	public Receipt Receipt(SaleDTO saleInfo) {
-		return null;
+	public Receipt(SaleDTO saleInfo) {
+
 	}
 
 	public void printReceipt() {

@@ -20,8 +20,6 @@ class PriceModifiersTest {
 	@Test
 	public void constructorTest() {
 		assertNotNull("null Taxes", priceModifiers.getTaxes());
-		CustomerDTO ID = new CustomerDTO();
-		assertNotNull("null Discount", priceModifiers.getDiscount(ID));
 	}
 
 }

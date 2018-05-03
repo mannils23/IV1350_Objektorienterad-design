@@ -1,6 +1,5 @@
 package se.kth.iv1350.PoS.model;
 
-import se.kth.iv1350.PoS.integration.Discount;
 import se.kth.iv1350.PoS.integration.Taxes;
 import se.kth.iv1350.PoS.integration.PriceModifiers;
 
@@ -8,19 +7,27 @@ public class TotalPrice {
 
 	private Amount amount;
 
-	private Discount discount;
-
 	private Taxes taxes;
-
-	private PriceModifiers priceModifiers;
 
 	public TotalPrice(Amount runningTotal) {
 		amount = runningTotal;
 	}
 	
-	public void addPriceModifiers(PriceModifiers priceModifiers) {
-		taxes = priceModifiers.getTaxes();
-		amount.addAmount(taxes.getAmount());
+	public void applyTaxes(Taxes taxes) {
+		this.taxes = taxes;
+		double newValue = calculateValueAfterTaxes(taxes.getTaxRate());
+		amount.setValue(newValue);
 	}
-
+	
+	private double calculateValueAfterTaxes(double taxRate) {
+		return amount.getValue() * taxRate;
+	}
+	
+	public Amount getAmount() {
+		return amount;
+	}
+	
+	public Taxes getTaxes() {
+		return taxes;
+	}
 }

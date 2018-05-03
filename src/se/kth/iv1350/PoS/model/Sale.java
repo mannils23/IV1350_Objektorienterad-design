@@ -13,8 +13,6 @@ public class Sale {
 
 	private Amount runningTotal;
 
-	private Discount discount;
-
 	private Taxes taxes;
 
 	private SaleDTO saleDTO;
@@ -23,13 +21,14 @@ public class Sale {
 
 	private Change change;
 	
-	private PriceModifiers priceModifiers;
+	private PaymentDTO payment;
+	
 	
 	/**
 	 * Creates a new instance, representing a sale.
 	 */
 	public Sale() {
-		priceModifiers = new PriceModifiers();
+		taxes = new Taxes();
 		items = new ArrayList<Item>();
 	}
 	/**
@@ -55,37 +54,19 @@ public class Sale {
 		return saleInfo;
 	}
 
-	public void increaseQuantity(ItemIdentifierDTO itemIdentifier) {
-
-	}
-
 	public TotalPrice getTotalPrice() {
 		TotalPrice totalPrice = new TotalPrice(runningTotal);
-		totalPrice.addPriceModifiers(priceModifiers);
+		totalPrice.applyTaxes(taxes);
 		return totalPrice;
 	}
 
-	public void addDiscounts(Discount discounts) {
-
-	}
-
 	public void pay(PaymentDTO payment) {
-
+		this.payment = payment;
+		return;
 	}
 
-	public Amount getChange() {
-		return null;
+	public Change getChange() {
+		change = new Change(payment, totalPrice);
+		return change;
 	}
-
-	public void addItemWithQuantity(Item item, int quantity) {
-
-	}
-
-	public int getDiscount() {
-		return 0;
-	}
-	public PriceModifiers getPriceModifiers() {
-		return priceModifiers;
-	}
-
 }

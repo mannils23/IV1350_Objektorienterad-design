@@ -12,8 +12,6 @@ public class Controller {
 
 	private ItemCatalog itemCatalog;
 	
-	private CustomerDiscounts customerDiscounts;
-	
 	private ExternalSystems externalSystems;
 	
 	private Printer printer;
@@ -32,7 +30,6 @@ public class Controller {
 	 */
 	public Controller(CatalogCreator catalogs, ExternalSystemsCreator externalSystemsCreator) {
 		itemCatalog = catalogs.getItemCatalog();
-		customerDiscounts = catalogs.getCustomerDiscounts();
 		externalSystems = externalSystemsCreator.getExternalSystems();
 		printer = externalSystemsCreator.getPrinter();
 	}
@@ -42,8 +39,7 @@ public class Controller {
 	 * @return Returns information about a the sale as a <code>SaleDTO</code> object.
 	 */
 	public SaleDTO enterItem(ItemIdentifierDTO itemIdentifier) {
-		ItemInformation itemInfo = itemCatalog.getItemInformation(itemIdentifier);
-		Item item = new Item(itemInfo);
+		Item item = itemCatalog.getItem(itemIdentifier);
 		sale.addItem(item);
 		SaleDTO saleInfo = sale.getSaleInformation();
 		return saleInfo;
@@ -56,9 +52,6 @@ public class Controller {
 
 	}
 
-	public SaleInformation increaseQuantity(ItemIdentifierDTO itemIdentifier) {
-		return null;
-	}
 /**
  * Returns the total price for the sale.
  * @return The total price.
@@ -66,25 +59,20 @@ public class Controller {
 	public TotalPrice indicateDone() {
 		return sale.getTotalPrice();
 	}
-
-	public SaleDTO requestDiscount(CustomerDTO ID) {
-		return null;
+/**
+ * Pays the current <code>Sale</code>, records it and returns a <code>Change</code> object.
+ * @param payment Information about the payment.
+ * @return Information about the change as <code>Change</code>.
+ */
+	public Change pay(PaymentDTO payment) {
+		sale.pay(payment);
+		recordSale();
+		return sale.getChange();
 	}
 
-	public Amount pay(PaymentDTO payment) {
-		return null;
-	}
-
-	public SaleDTO enterItemWithQuantity(ItemIdentifierDTO itemIdentifier, int quantity) {
-		return null;
-	}
 	
 	public ItemCatalog getItemCatalog() {
 		return itemCatalog;
-	}
-	
-	public CustomerDiscounts getCustomerDiscounts() {
-		return customerDiscounts;
 	}
 	
 	public ExternalSystems getExternalSystems() {
@@ -98,5 +86,15 @@ public class Controller {
 	public Sale getSale() {
 		return sale;
 	}
-
+	
+	private void recordSale() {
+		SaleDTO saleInfo = sale.getSaleInformation();
+		printReceipt(saleInfo);
+		externalSystems.recordSale(saleInfo);
+	}
+	
+	private void printReceipt(SaleDTO saleInfo) {
+		receipt = new Receipt(saleInfo);
+		receipt.printReceipt();
+	}
 }

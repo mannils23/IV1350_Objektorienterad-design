@@ -1,14 +1,11 @@
 package se.kth.iv1350.PoS.model;
 
-import se.kth.iv1350.PoS.integration.Discount;
 
 public class SaleDTO {
 
 	private int numberOfItems;
 
 	private Amount totalPrice;
-
-	private Discount discount;
 
 	private Amount change;
 
@@ -27,10 +24,6 @@ public class SaleDTO {
 	}
 
 	public Amount getTotalPrice() {
-		return null;
-	}
-
-	public Discount getDiscount() {
 		return null;
 	}
 

@@ -28,9 +28,6 @@ class ControllerTest {
 		assertNotNull("Null ItemCatalog", controller.getItemCatalog());
 		assertTrue("ItemCatalog wrong type", controller.getItemCatalog() instanceof ItemCatalog);
 		
-		assertNotNull("Null CustomerDiscounts", controller.getCustomerDiscounts());
-		assertTrue("CustomerDiscounts wrong type", controller.getCustomerDiscounts() instanceof CustomerDiscounts);
-		
 		assertNotNull("Null ExternalSystems", controller.getExternalSystems());
 		assertTrue("ExternalSystems wrong type", controller.getExternalSystems() instanceof ExternalSystems);
 		

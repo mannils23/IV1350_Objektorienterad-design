@@ -1,6 +1,7 @@
 package se.kth.iv1350.PoS.view;
 
 import se.kth.iv1350.PoS.controller.Controller;
+import se.kth.iv1350.PoS.model.*;
 
 /**
  * Holds the <code>view</code> method. Simulates an external system interacting with <code>Controller</code>
@@ -10,6 +11,7 @@ import se.kth.iv1350.PoS.controller.Controller;
 public class View {
 
 	private Controller controller;
+	private SaleDTO saleInfo;
 	
 
 /**
@@ -18,6 +20,18 @@ public class View {
  */
 	public View(Controller controller) {
 		this.controller = controller;
+	}
+	
+	public void trySale() {
+		controller.startNewSale();
+		saleInfo = controller.enterItem(createID(0));
+		saleInfo = controller.enterItem(createID(1));
+		
+	}
+	
+	public ItemIdentifierDTO createID(int value) {
+		ItemIdentifierDTO itemInfo = new ItemIdentifierDTO(value);
+		return itemInfo;
 	}
 
 }
