@@ -31,6 +31,15 @@ public class Controller {
 		externalSystems = externalSystemsCreator.getExternalSystems();
 		printer = externalSystemsCreator.getPrinter();
 	}
+	
+	/**
+	 * Creates the <code>Sale</code> object representing the active sale.
+	 */
+	public void startNewSale() {
+		sale = new Sale();
+
+	}
+	
 	/**
 	 * Tries to enter specified <code>Item</code> to the current sale.
 	 * @param itemIdentifier Specifies the <code>Item</code> object to add.
@@ -42,49 +51,25 @@ public class Controller {
 		SaleDTO saleInfo = sale.getSaleInformation();
 		return saleInfo;
 	}
+
 	/**
-	 * Creates the <code>Sale</code> object representing the active sale.
-	 */
-	public void startNewSale() {
-		sale = new Sale();
-
-	}
-
-/**
- * Returns the total price for the sale.
- * @return The total price.
- */
+ 	* Returns the total price for the sale.
+ 	* @return The total price.
+ 	*/
 	public TotalPrice indicateDone() {
 		return sale.getTotalPrice();
 	}
-/**
- * Pays the current <code>Sale</code>, records it and returns a <code>Change</code> object.
- * @param payment Information about the payment.
- * @return Information about the change as <code>Change</code>.
- */
+	/**
+	 * Pays the current <code>Sale</code>, records it and returns a <code>Change</code> object.
+	 * @param payment Information about the payment.
+	 * @return Information about the change as <code>Change</code>.
+	 */
 	public Change pay(PaymentDTO payment) {
 		sale.pay(payment);
 		recordSale();
 		return sale.getChange();
 	}
 
-	
-	public ItemCatalog getItemCatalog() {
-		return itemCatalog;
-	}
-	
-	public ExternalSystems getExternalSystems() {
-		return externalSystems;
-	}
-	
-	public Printer getPrinter() {
-		return printer;
-	}
-	
-	public Sale getSale() {
-		return sale;
-	}
-	
 	private void recordSale() {
 		SaleDTO saleInfo = sale.getSaleInformation();
 		printReceipt(saleInfo);

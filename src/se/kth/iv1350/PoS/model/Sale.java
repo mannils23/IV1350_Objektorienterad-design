@@ -4,7 +4,7 @@ import java.util.*;
 import se.kth.iv1350.PoS.integration.*;
 
 /**
- * Represent an active sale
+ * Represents an active sale.
  *
  */
 public class Sale {
@@ -32,29 +32,29 @@ public class Sale {
 		items = new ArrayList<Item>();
 	}
 	/**
-	 * Adds an <code>Item</code> to the sale.
-	 * @param item The item to be added.
+	 * Adds an {@link Item} to the {@link Sale}.
+	 * @param item The <code>item</code> to be added.
 	 */
 	public void addItem(Item item) {
 		items.add(item);
 	}
 	/**
-	 * Returns the list of all items in the current sale.
-	 * @return The list of items.
+	 * Returns the {@link List} of all {@link Items} in the current {@link Sale}.
+	 * @return The <code>List</code> of items.
 	 */
 	public List<Item> getItems() {
 		return items;
 	}
 	/**
-	 * Returns a <code>SaleDTO</code> object with information from the sale.
-	 * @return The <code>SaleDTO</code> with sale information.
+	 * Returns a {@link SaleDTO} object with information from the {@link Sale}.
+	 * @return The <code>SaleDTO</code> with <code>Sale</code> information.
 	 */
 	public SaleDTO getSaleInformation() {
 		SaleDTO saleInfo = new SaleDTO(this);
 		return saleInfo;
 	}
 	/**
-	 * Returns the total price, as an object of {@link TotalPrice}, of a {@link Sale}.
+	 * Returns the {@link TotalPrice} of a {@link Sale}.
 	 * @return The <code>TotalPrice</code> of the current <code>Sale</code>.
 	 */
 	public TotalPrice getTotalPrice() {

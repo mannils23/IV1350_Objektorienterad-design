@@ -3,7 +3,7 @@ package se.kth.iv1350.PoS.model;
 import java.util.List;
 
 /**
- * Contains static information about a <code>Sale</code> at a current time.
+ * Contains information about a <code>Sale</code> at a current time. Instances are immutable.
  *
  */
 public class SaleDTO {
@@ -17,7 +17,7 @@ public class SaleDTO {
 	private final PaymentDTO payment;
 	
 	/**
-	 * Creates an instance with the current information in <code>Sale</code>.
+	 * Creates an instance with the current information in {@link Sale}.
 	 * @param sale The <code>Sale</code> object to take information from.
 	 */
 	public SaleDTO(Sale sale) {
@@ -28,29 +28,29 @@ public class SaleDTO {
 		
 	}
 	/**
-	 * Returns the <code>TotalPrice</code>.
+	 * Returns the {@link TotalPrice}.
 	 * @return The <code>TotalPrice</code>.
 	 */
 	public TotalPrice getTotalPrice() {
 		return totalPrice;
 	}
 	/**
-	 * Returns the <code>Cangee</code>.
+	 * Returns the {@link Change}.
 	 * @return The <code>Change</code>.
 	 */
 	public Amount getChange() {
 		return null;
 	}
 	/**
-	 * Returns all the <code>Item</code> objects in a <code>List</code>.
+	 * Returns all the {@link Item} objects in a {@link List}.
 	 * @return All <code>Item</code> objects in a <code>List</code>.
 	 */
 	public List<Item> getItems() {
 		return null;
 	}
 	/**
-	 * Returns the <code>Payment</code>.
-	 * @return The <code>Payment</code>.
+	 * Returns the {@link PaymentDTO}.
+	 * @return The <code>PaymentDTO</code>.
 	 */
 	public PaymentDTO getPayment() {
 		return payment;

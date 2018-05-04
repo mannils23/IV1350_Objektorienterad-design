@@ -3,8 +3,6 @@ package se.kth.iv1350.PoS.integration;
 import static org.junit.Assert.*;
 import org.junit.jupiter.api.*;
 
-import se.kth.iv1350.PoS.model.CustomerDTO;
-
 class PriceModifiersTest {
 	
 	PriceModifiers priceModifiers;
