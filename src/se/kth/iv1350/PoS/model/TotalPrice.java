@@ -1,7 +1,6 @@
 package se.kth.iv1350.PoS.model;
 
 import se.kth.iv1350.PoS.integration.Taxes;
-import se.kth.iv1350.PoS.integration.PriceModifiers;
 
 /**
  * Represents to total price of a finished {@link Sale}.
@@ -26,12 +25,13 @@ public class TotalPrice {
 	 */
 	public void applyTaxes(Taxes taxes) {
 		this.taxes = taxes;
-		double newValue = calculateValueAfterTaxes(taxes.getTaxRate());
+		double newValue = calculateValueAfterTaxes(taxes);
 		amount.setValue(newValue);
 	}
 	
-	private double calculateValueAfterTaxes(double taxRate) {
-		return amount.getValue() * taxRate;
+	private double calculateValueAfterTaxes(Taxes taxes) {
+		double valueAfterTaxes = amount.getValue() - amount.getValue() * taxes.getTaxRate();
+		return valueAfterTaxes;
 	}
 	
 	/**

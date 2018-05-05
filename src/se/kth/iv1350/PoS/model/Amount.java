@@ -35,6 +35,7 @@ public class Amount {
 	public void addAmount(Amount amountToAdd) {
 		value += amountToAdd.getValue();
 	}
+	
 	/**
 	 * Sets a the value of the {@link Amount} to the given value.
 	 * @param newValue The new value for the <code>Amount</code>.

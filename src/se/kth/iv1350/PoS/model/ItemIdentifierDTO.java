@@ -5,7 +5,7 @@ package se.kth.iv1350.PoS.model;
  * @author Marcus
  *
  */
-public class ItemIdentifierDTO {
+public class ItemIdentifierDTO { 
 
 	private int identifierValue;
 	
@@ -24,5 +24,17 @@ public class ItemIdentifierDTO {
 	public int getIdentifierValue() {
 		return identifierValue;
 	}
-
+	
+	@Override
+	public boolean equals(Object o) {
+		if(o == this) {
+			return true;
+		}
+		if( !(o instanceof ItemIdentifierDTO)) {
+			return false;
+		}
+		ItemIdentifierDTO otherID = (ItemIdentifierDTO) o;
+		
+		return Integer.compare(this.identifierValue, otherID.identifierValue) == 0;
+	}
 }

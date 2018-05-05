@@ -1,5 +1,7 @@
 package se.kth.iv1350.PoS.model;
 
+import java.util.ArrayList;
+
 import se.kth.iv1350.PoS.integration.Printer;
 
 /**
@@ -8,17 +10,13 @@ import se.kth.iv1350.PoS.integration.Printer;
  */
 public class Receipt {
 
-	private int numberOfItems;
+	private TotalPrice totalPrice;
 
-	private Amount totalPrice;
+	private Change change;
 
-	private Amount change;
+	private ArrayList items;
 
-	private String currency;
-
-	//private ArrayList items;
-
-	private Amount payment;
+	private PaymentDTO payment;
 
 	private Printer printer;
 
@@ -27,13 +25,17 @@ public class Receipt {
 	 * @param saleInfo The information for the <code>Receipt</code>.
 	 */
 	public Receipt(SaleDTO saleInfo) {
-
+		totalPrice = saleInfo.getTotalPrice();
+		change = saleInfo.getChange();
+		items = saleInfo.getItems();
+		payment = saleInfo.getPayment();
+		printer = new Printer();
 	}
 	/**
 	 * Prints the receipt through an external {@link Printer}.
 	 */
 	public void printReceipt() {
-
+		printer.printReceipt(this);
 	}
 
 }

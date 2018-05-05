@@ -1,6 +1,6 @@
 package se.kth.iv1350.PoS.model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Contains information about a <code>Sale</code> at a current time. Instances are immutable.
@@ -12,7 +12,7 @@ public class SaleDTO {
 
 	private final Change change;
 
-	private final List<Item> items;
+	private final ArrayList<Item> items;
 
 	private final PaymentDTO payment;
 	
@@ -38,15 +38,15 @@ public class SaleDTO {
 	 * Returns the {@link Change}.
 	 * @return The <code>Change</code>.
 	 */
-	public Amount getChange() {
-		return null;
+	public Change getChange() {
+		return change;
 	}
 	/**
 	 * Returns all the {@link Item} objects in a {@link List}.
 	 * @return All <code>Item</code> objects in a <code>List</code>.
 	 */
-	public List<Item> getItems() {
-		return null;
+	public ArrayList<Item> getItems() {
+		return items;
 	}
 	/**
 	 * Returns the {@link PaymentDTO}.

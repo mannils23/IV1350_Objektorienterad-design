@@ -8,6 +8,10 @@ public class PaymentDTO {
 
 	private Amount paidAmount;
 	
+	public PaymentDTO() {
+		paidAmount = new Amount(0);
+	}
+	
 	/**
 	 * Creates instance representing the information about a payment for a {@link Sale}.
 	 * @param paidAmount The {@link Amount} paid.

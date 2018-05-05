@@ -14,8 +14,6 @@ public class Controller {
 	
 	private ExternalSystems externalSystems;
 	
-	private Printer printer;
-
 	private Sale sale;
 
 	private Receipt receipt;
@@ -29,7 +27,6 @@ public class Controller {
 	public Controller(CatalogCreator catalogs, ExternalSystemsCreator externalSystemsCreator) {
 		itemCatalog = catalogs.getItemCatalog();
 		externalSystems = externalSystemsCreator.getExternalSystems();
-		printer = externalSystemsCreator.getPrinter();
 	}
 	
 	/**
@@ -56,8 +53,8 @@ public class Controller {
  	* Returns the total price for the sale.
  	* @return The total price.
  	*/
-	public TotalPrice indicateDone() {
-		return sale.getTotalPrice();
+	public SaleDTO indicateDone() {
+		return sale.getSaleInformation();
 	}
 	/**
 	 * Pays the current <code>Sale</code>, records it and returns a <code>Change</code> object.

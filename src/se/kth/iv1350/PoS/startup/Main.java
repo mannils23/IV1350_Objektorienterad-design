@@ -17,7 +17,7 @@ public class Main {
 	private CatalogCreator catalogCreator;
 
 	/**
-	 * Starts the application
+	 * Starts the application and runs a demo.
 	 * @param args The application does not take any command line parameters.
 	 * 
 	 */

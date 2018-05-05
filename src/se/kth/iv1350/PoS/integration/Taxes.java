@@ -6,10 +6,10 @@ package se.kth.iv1350.PoS.integration;
  */
 public class Taxes {
 
-	private static final double taxRate = 0.3;
+	private static final double taxRate = 0.30;
 
 	/**
-	 * Returns the current <code>taxRate</code> as a decimal precentage.
+	 * Returns the current <code>taxRate</code> as a decimal precentage with two decimals.
 	 * @return The <code>taxRate</code> as a decimal percentage. 
 	 */
 	public double getTaxRate() {

@@ -9,13 +9,11 @@ import se.kth.iv1350.PoS.integration.*;
  */
 public class Sale {
 
-	private List<Item> items;
+	private ArrayList<Item> items;
 
 	private Amount runningTotal;
 
 	private Taxes taxes;
-
-	private SaleDTO saleDTO;
 
 	private TotalPrice totalPrice;
 
@@ -30,19 +28,28 @@ public class Sale {
 	public Sale() {
 		taxes = new Taxes();
 		items = new ArrayList<Item>();
+		runningTotal = new Amount(0);
+		change = new Change();
+		payment = new PaymentDTO();
 	}
 	/**
-	 * Adds an {@link Item} to the {@link Sale}.
+	 * Adds an {@link Item} to the {@link Sale} and updates the <code>runningTotal</code>.
 	 * @param item The <code>item</code> to be added.
 	 */
 	public void addItem(Item item) {
-		items.add(item);
+		if(item != null) {
+			items.add(item);
+			updateRunningTotal();
+			return;
+		}
+		throw new IllegalArgumentException();
 	}
+	
 	/**
-	 * Returns the {@link List} of all {@link Items} in the current {@link Sale}.
-	 * @return The <code>List</code> of items.
+	 * Returns the {@link ArrayList} of all {@link Items} in the current {@link Sale}.
+	 * @return The <code>ArrayList</code> of items.
 	 */
-	public List<Item> getItems() {
+	public ArrayList<Item> getItems() {
 		return items;
 	}
 	/**
@@ -58,7 +65,7 @@ public class Sale {
 	 * @return The <code>TotalPrice</code> of the current <code>Sale</code>.
 	 */
 	public TotalPrice getTotalPrice() {
-		TotalPrice totalPrice = new TotalPrice(runningTotal);
+		totalPrice = new TotalPrice(runningTotal);
 		totalPrice.applyTaxes(taxes);
 		return totalPrice;
 	}
@@ -85,4 +92,13 @@ public class Sale {
 	public PaymentDTO getPayment() {
 		return payment;
 	}
+	
+	private void updateRunningTotal() {
+		runningTotal = new Amount();
+		for(Item item : items) {
+			runningTotal.addAmount(item.getPrice());
+		}
+		
+	}
 }
+

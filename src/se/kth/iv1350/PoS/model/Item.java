@@ -49,7 +49,7 @@ public class Item {
 	 * Returns the {@link Amount} describing the price of the <code>Item</code>.
 	 * @return
 	 */
-	public Amount price() {
+	public Amount getPrice() {
 		return price;
 	}
 

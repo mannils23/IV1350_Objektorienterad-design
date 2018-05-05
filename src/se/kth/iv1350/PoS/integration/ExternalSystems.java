@@ -19,7 +19,7 @@ public class ExternalSystems {
 	 * @param saleInfo The information about a <code>Sale</code>.
 	 */
 	public void recordSale(SaleDTO saleInfo) {
-		System.out.println("Sale recorded in external systems.");
+			System.out.print("Sale recorded in external systems.");
 	}
 
 }
