@@ -8,6 +8,9 @@ public class Change {
 
 	private Amount change;
 
+	/**
+	 * Creates an instance of {@link Change} where the <code>Amount</code> value is 0.
+	 */
 	public Change() {
 		change = new Amount(0);
 	}
@@ -18,9 +21,12 @@ public class Change {
 	 * @param totalPrice
 	 */
 	public Change(PaymentDTO payment, TotalPrice totalPrice) {
-		double valuePaid = payment.getAmount().getValue();
-		double valueTotal = totalPrice.getAmount().getValue();
-		change = new Amount(valuePaid - valueTotal);
+		if(paymentLargerThanTotalPrice(payment, totalPrice)) {
+			change = calculateAmountDifference(payment, totalPrice);
+		}
+		else{
+			change = new Amount(0);
+		}
 	}
 
 	/**
@@ -29,6 +35,16 @@ public class Change {
 	 */
 	public Amount getChangeAmount() {
 		return change;
+	}
+	
+	private boolean paymentLargerThanTotalPrice(PaymentDTO payment, TotalPrice totalPrice) {
+		return (payment.getAmount().getValue() > totalPrice.getAmount().getValue());
+	}
+	
+	private Amount calculateAmountDifference(PaymentDTO payment, TotalPrice totalPrice) {
+		double valuePaid = payment.getAmount().getValue();
+		double valueTotal = totalPrice.getAmount().getValue();
+		return new Amount(valuePaid - valueTotal);
 	}
 
 }

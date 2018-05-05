@@ -1,32 +1,30 @@
 package se.kth.iv1350.PoS.model;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Before;
+import org.junit.Test;
 
 import se.kth.iv1350.PoS.integration.Taxes;
 
-class TotalPriceTest {
+public class TotalPriceTest {
 
 	TotalPrice test;
 	
-	@BeforeEach
-	void setUp() {
+	@Before
+	public void setUp() {
 		Amount amount = new Amount(10);
 		test = new TotalPrice(amount);
 	}
 
 	@Test
-	void testApplyTaxes() {
+	public void testApplyTaxes() {
 		Taxes taxes = new Taxes();
 		test.applyTaxes(taxes);
-		double expected = 7;
+		double expected = 13;
 		double actual = test.getAmount().getValue();
-		assertEquals(expected, actual);
+		assertEquals(expected, actual, 0.00001);
 	}
 
 }

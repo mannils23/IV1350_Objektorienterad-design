@@ -75,14 +75,13 @@ public class Sale {
 	 */
 	public void pay(PaymentDTO payment) {
 		this.payment = payment;
-		return;
+		generateChange();
 	}
 	/**
 	 * Returns the {@link Change} of the current {@link Sale}.
 	 * @return The <code>Change</code> representing the change of the <code>Sale</code>.
 	 */
 	public Change getChange() {
-		change = new Change(payment, totalPrice);
 		return change;
 	}
 	/**
@@ -98,7 +97,11 @@ public class Sale {
 		for(Item item : items) {
 			runningTotal.addAmount(item.getPrice());
 		}
-		
+	}
+	
+	private void generateChange() {
+		change = new Change(payment, totalPrice);
 	}
 }
+	
 

@@ -1,21 +1,23 @@
 package se.kth.iv1350.PoS.model;
 
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.*;
+import org.junit.Before;
+import org.junit.Test;
+
 import se.kth.iv1350.PoS.integration.Taxes;
 
-class SaleTest {
+public class SaleTest {
 
 	Sale sale;
 	Item item;
 	
-	@BeforeEach
+	@Before
 	public void setUp() {
 		sale = new Sale();
 		item = createItem(5, "item added for test", 10.0);
@@ -58,11 +60,10 @@ class SaleTest {
 	
 	@Test
 	public void totalPriceNoItemsTest() {
-		Taxes taxes = new Taxes();
 		TotalPrice tp = sale.getTotalPrice();
 		double expected = 0;
 		double actual = tp.getAmount().getValue();
-		assertEquals(expected, actual);
+		assertEquals(expected, actual, 0.00001);
 	}
 	
 	@Test
@@ -71,8 +72,10 @@ class SaleTest {
 		sale.addItem(item);
 		
 		double actual = sale.getTotalPrice().getAmount().getValue();
-		double expected = item.getPrice().getValue() - item.getPrice().getValue() * taxes.getTaxRate();
-		assertEquals(expected, actual);
+		double actual2 = sale.getTotalPrice().getAmount().getValue();
+		double expected = item.getPrice().getValue() + item.getPrice().getValue() * taxes.getTaxRate();
+		assertEquals(expected, actual, 0.00001);
+		assertEquals(expected, actual2, 0.00001);
 	}
 	
 	@Test
@@ -83,8 +86,8 @@ class SaleTest {
 		}
 		Taxes taxes = new Taxes();
 		double actual = sale.getTotalPrice().getAmount().getValue();
-		double expected = 100 - 100 * taxes.getTaxRate();
-		assertEquals(expected, actual);
+		double expected = 100 + 100 * taxes.getTaxRate();
+		assertEquals(expected, actual, 0.00001);
 	}
 	
 	private Item createItem(int idNumber, String desc, double price) {

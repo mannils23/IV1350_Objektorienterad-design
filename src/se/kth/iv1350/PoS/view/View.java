@@ -1,5 +1,7 @@
 package se.kth.iv1350.PoS.view;
 
+import java.text.DecimalFormat;
+
 import se.kth.iv1350.PoS.controller.Controller;
 import se.kth.iv1350.PoS.model.*;
 
@@ -26,14 +28,18 @@ public class View {
 	 * Runs simulated sale in the system as placeholder for the real view layer.
 	 */
 	public void trySale() {
+		startNewSale();
+		enterItemToSaleByID(0);
+		enterItemToSaleByID(1);
+		enterItemToSaleByID(3);
+		noMoreItems();
+		pay();
+		
+		
+	}
+	
+	private void startNewSale() {
 		controller.startNewSale();
-		saleInfo = controller.enterItem(createID(0));
-		printSaleInfo();
-		saleInfo = controller.enterItem(createID(1));
-		printSaleInfo();
-		controller.indicateDone();
-		
-		
 	}
 	
 	private ItemIdentifierDTO createID(int value) {
@@ -41,16 +47,39 @@ public class View {
 		return itemInfo;
 	}
 	
+	private void enterItemToSaleByID(int IDnumber) {
+		saleInfo = controller.enterItem(createID(IDnumber));
+		System.out.println("	    .ENTERING ITEMS.");
+		printSaleInfo();
+	}
+	
+	private void noMoreItems() {
+		controller.indicateDone();
+		System.out.println("	   .ALL ITEMS ENTERED.");
+		printSaleInfo();
+	}
+	
+	private void pay() {
+		PaymentDTO payment = new PaymentDTO(new Amount(20));
+		saleInfo = controller.pay(payment);
+		System.out.println("	   .PAYMENT RECIEVED.");
+		printSaleInfo();
+	}
+	
 	private void printSaleInfo() {
+		System.out.println("	Current Sale Information: ");
 		for(Item item : saleInfo.getItems()) {
-			System.out.println("	Current Sale Information: ");
-			System.out.println("Item ID: " + item.getIdentifier() + "  |  " 
+			System.out.println("Item ID: " + item.getIdentifier().getIdentifierValue() + "  |  " 
 								+ "Item description: " + item.getDescription() + "  |  " 
 								+ "Price: " + item.getPrice().getValue());
 		}
-		System.out.println("	Total price: " + saleInfo.getTotalPrice().getAmount().getValue());
+		DecimalFormat df = new DecimalFormat("#.##");
+		double total = saleInfo.getTotalPrice().getAmount().getValue();
+		System.out.println("	TotalPrice: " + df.format(total));
+		System.out.println("	Tax Rate: " + saleInfo.getTaxes().getTaxRate() * 100 + "%");
 		System.out.println("	Paid: " + saleInfo.getPayment().getAmount().getValue());
 		System.out.println("	Change: " + saleInfo.getChange().getChangeAmount().getValue());
+		System.out.println();
 	}
 
 }

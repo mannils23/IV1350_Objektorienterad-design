@@ -61,10 +61,11 @@ public class Controller {
 	 * @param payment Information about the payment.
 	 * @return Information about the change as <code>Change</code>.
 	 */
-	public Change pay(PaymentDTO payment) {
+	public SaleDTO pay(PaymentDTO payment) {
 		sale.pay(payment);
+		sale.getChange();
 		recordSale();
-		return sale.getChange();
+		return sale.getSaleInformation();
 	}
 
 	private void recordSale() {

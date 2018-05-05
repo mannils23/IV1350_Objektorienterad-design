@@ -11,24 +11,22 @@ import se.kth.iv1350.PoS.integration.*;
  */
 public class Main {
 	
-	private View view;
-	private Controller controller;
-	private ExternalSystemsCreator externalSystemsCreator;
-	private CatalogCreator catalogCreator;
+	private static View view;
+	private static Controller controller;
+	private static ExternalSystemsCreator externalSystemsCreator;
+	private static CatalogCreator catalogCreator;
 
 	/**
 	 * Starts the application and runs a demo.
 	 * @param args The application does not take any command line parameters.
 	 * 
 	 */
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		externalSystemsCreator = new ExternalSystemsCreator();
 		catalogCreator = new CatalogCreator();
 		controller = new Controller(catalogCreator,externalSystemsCreator);
 		view = new View(controller);
 		
 		view.trySale();
-		
 	}
-
 }

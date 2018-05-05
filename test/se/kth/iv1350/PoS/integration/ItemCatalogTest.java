@@ -4,29 +4,23 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import se.kth.iv1350.PoS.model.Amount;
 import se.kth.iv1350.PoS.model.Item;
 import se.kth.iv1350.PoS.model.ItemIdentifierDTO;
 
-class ItemCatalogTest {
+public class ItemCatalogTest {
 
 	private ItemCatalog itemCatalog;
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		itemCatalog = new ItemCatalog();
 	}
 
-	@AfterEach
-	void tearDown() {
-		itemCatalog = null;
-	}
-
 	@Test
-	void testGetItem() {
+	public void testGetItem() {
 		ItemIdentifierDTO expected = new ItemIdentifierDTO(5);
 		Item foundItem = itemCatalog.getItem(expected);
 		ItemIdentifierDTO actual = foundItem.getIdentifier();
@@ -34,7 +28,7 @@ class ItemCatalogTest {
 	}
 	
 	@Test
-	void testAddItem() throws Exception {
+	public void testAddItem() throws Exception {
 		Item itemToAdd = createItem(40, "test item", 20);
 		itemCatalog.addItem(itemToAdd);
 		Item itemAdded = itemCatalog.getItem(new ItemIdentifierDTO(40));
@@ -42,7 +36,7 @@ class ItemCatalogTest {
 	}
 	
 	@Test
-	void testAddNullItem() throws Exception {
+	public void testAddNullItem() throws Exception {
 		try {
 			Item nullItem = null;
 			itemCatalog.addItem(nullItem);
@@ -53,7 +47,7 @@ class ItemCatalogTest {
 	}
 	
 	@Test
-	void testItemDontExist() {
+	public void testItemDontExist() {
 		ItemIdentifierDTO itemToFindID = new ItemIdentifierDTO(1000);
 		Item item = itemCatalog.getItem(itemToFindID);
 		boolean emptyItem = (item.getDescription() == null && item.getIdentifier() == null && item.getPrice() == null);

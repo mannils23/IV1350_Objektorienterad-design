@@ -2,6 +2,8 @@ package se.kth.iv1350.PoS.model;
 
 import java.util.ArrayList;
 
+import se.kth.iv1350.PoS.integration.Taxes;
+
 /**
  * Contains information about a <code>Sale</code> at a current time. Instances are immutable.
  *
@@ -16,6 +18,9 @@ public class SaleDTO {
 
 	private final PaymentDTO payment;
 	
+	private final Taxes taxes;
+
+	
 	/**
 	 * Creates an instance with the current information in {@link Sale}.
 	 * @param sale The <code>Sale</code> object to take information from.
@@ -25,6 +30,7 @@ public class SaleDTO {
 		change = sale.getChange();
 		items = sale.getItems();
 		payment = sale.getPayment();
+		taxes = totalPrice.getTaxes();
 		
 	}
 	/**
@@ -55,5 +61,12 @@ public class SaleDTO {
 	public PaymentDTO getPayment() {
 		return payment;
 	}
-
+	
+	/**
+	 * Returns the {@link Taxes} applied for this {@link Sale}.
+	 * @return The <code>Taxes</code> for the <code>Sale</code>.
+	 */
+	public Taxes getTaxes() {
+		return taxes;
+	}
 }

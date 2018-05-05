@@ -1,26 +1,19 @@
 package se.kth.iv1350.PoS.integration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import org.junit.Before;
+import org.junit.Test;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
-
-class ExternalSystemsCreatorTest {
+public class ExternalSystemsCreatorTest {
 	
 	private ExternalSystemsCreator test;
 	
-	@BeforeEach
+	@Before
 	public void setUp() {
 		test = new ExternalSystemsCreator();
 	}
 
-	@AfterEach
-	public void tearDown() {
-		test = null;
-	}
 	@Test
 	public void testGetPrinter() {
 		assertNotNull("no printer created", test.getPrinter());

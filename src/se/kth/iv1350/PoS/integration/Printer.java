@@ -20,7 +20,7 @@ public class Printer {
  * Prints information from <code>Receipt</code> object.
  */
 	public void printReceipt(Receipt receipt) {
-		System.out.print("Receipt sent to printer.");
+		System.out.print("Receipt sent to printer. \n");
 		return;
 	}
 

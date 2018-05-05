@@ -1,24 +1,16 @@
 package se.kth.iv1350.PoS.integration;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.fail;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-class TaxesTest {
+public class TaxesTest {
 	private Taxes taxes;
 
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		taxes = new Taxes();
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-		taxes = null;
 	}
 
 	@Test

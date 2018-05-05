@@ -17,7 +17,7 @@ public class TotalPrice {
 	 * @param runningTotal The running total cost of the current <code>Sale</code>.
 	 */
 	public TotalPrice(Amount runningTotal) {
-		amount = runningTotal;
+		amount = new Amount(runningTotal.getValue());
 	}
 	/**
 	 * Applies {@link Taxes} to the {@link TotalPrice}.
@@ -27,10 +27,11 @@ public class TotalPrice {
 		this.taxes = taxes;
 		double newValue = calculateValueAfterTaxes(taxes);
 		amount.setValue(newValue);
+		
 	}
 	
 	private double calculateValueAfterTaxes(Taxes taxes) {
-		double valueAfterTaxes = amount.getValue() - amount.getValue() * taxes.getTaxRate();
+		double valueAfterTaxes = amount.getValue() + amount.getValue() * taxes.getTaxRate();
 		return valueAfterTaxes;
 	}
 	

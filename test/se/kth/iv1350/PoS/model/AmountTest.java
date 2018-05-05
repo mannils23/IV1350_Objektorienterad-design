@@ -1,26 +1,30 @@
 package se.kth.iv1350.PoS.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import java.text.DecimalFormat;
 
-class AmountTest {
+import org.junit.Before;
+import org.junit.Test;
+
+public class AmountTest {
 
 	Amount amount;
-	@BeforeEach
-	void setUp() throws Exception {
+	@Before
+	public void setUp() throws Exception {
 		amount = new Amount(10);
 	}
 
 	@Test
-	void addAmountTest() {
+	public void addAmountTest() {
 		Amount input = new Amount(5);
 		amount.addAmount(input);
 		double actual = amount.getValue(); 
 		double expected = 15;
+		DecimalFormat df = new DecimalFormat("#.##");
 		
-		assertEquals(expected, actual);
+		
+		assertEquals(expected, actual, 0.00001);
 	}
 
 }

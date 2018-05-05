@@ -1,50 +1,38 @@
 package se.kth.iv1350.PoS.controller;
 
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Ignore;
+import org.junit.Before;
+import org.junit.Test;
 
-import se.kth.iv1350.PoS.integration.*;
+import se.kth.iv1350.PoS.integration.CatalogCreator;
+import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
+import se.kth.iv1350.PoS.model.Amount;
+import se.kth.iv1350.PoS.model.PaymentDTO;
+import se.kth.iv1350.PoS.model.SaleDTO;
 
-class ControllerTest {
+public class ControllerTest {
 	
-	Controller controller;
+	private Controller controller;
 	
-	@BeforeEach
+
+	@Before
 	public void setUp() {
-		CatalogCreator catalogCreator = new CatalogCreator();
-		ExternalSystemsCreator externalSystemsCreator = new ExternalSystemsCreator();
-		controller = new Controller(catalogCreator, externalSystemsCreator);
-		System.out.println("controller +");
-	}
-	
-	@AfterEach
-	public void tearDown() {
-		controller = null;
-		System.out.println("controller -");
-	}
-	
-	/*@Ignore ("test not updated")
-	@Test
-	public void constructorTest() {
-		assertNotNull("Null ItemCatalog", controller.getItemCatalog());
-		assertTrue("ItemCatalog wrong type", controller.getItemCatalog() instanceof ItemCatalog);
-		
-		assertNotNull("Null ExternalSystems", controller.getExternalSystems());
-		assertTrue("ExternalSystems wrong type", controller.getExternalSystems() instanceof ExternalSystems);
-		
-		assertNotNull("Null Printer", controller.getPrinter());
-		assertTrue("Printer wrong type", controller.getPrinter() instanceof Printer);
-	}*/
-	
-	
-	/*@Test
-	public void startNewSaleTest() {
+		ExternalSystemsCreator exSys = new ExternalSystemsCreator();
+		CatalogCreator catalogs = new CatalogCreator();
+		controller = new Controller(catalogs, exSys);
 		controller.startNewSale();
-		assertNotNull("Null Controller", controller);
-		assertNotNull("Null Sale", controller.getSale());
-	}*/
+	}
+
+	@Test
+	public void payTest() {
+		PaymentDTO payment = new PaymentDTO(new Amount(10));
+		controller.indicateDone();
+		SaleDTO saleInfo = controller.pay(payment);
+		double actual = saleInfo.getPayment().getAmount().getValue();
+		double expected = 10;
+		assertEquals(expected, actual, 0.0001);
+		
+	}
 
 }

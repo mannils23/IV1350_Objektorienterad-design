@@ -2,20 +2,20 @@ package se.kth.iv1350.PoS.integration;
 
 import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
-class CatalogCreatorTest {
+public class CatalogCreatorTest {
 
 	CatalogCreator test;
 	
-	@BeforeEach
+	@Before
 	public void setUp() {
 		test = new CatalogCreator();	
 	}
 	
-	@AfterEach
+	@After
 	public void tearDown() {
 		test = null;
 	}
