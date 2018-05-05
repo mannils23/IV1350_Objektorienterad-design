@@ -6,18 +6,18 @@ package se.kth.iv1350.PoS.model;
  */
 public class PaymentDTO {
 
-	private Amount paidAmount;
-	
-	public PaymentDTO() {
-		paidAmount = new Amount(0);
-	}
+	private final Amount paidAmount;
 	
 	/**
 	 * Creates instance representing the information about a payment for a {@link Sale}.
 	 * @param paidAmount The {@link Amount} paid.
 	 */
 	public PaymentDTO(Amount paidAmount) {
-		this.paidAmount = paidAmount;
+		if(paidAmount == null) {
+			this.paidAmount = new Amount(0);
+		} else {
+			this.paidAmount = paidAmount;
+		}
 	}
 	
 	/**

@@ -21,7 +21,6 @@ public class Sale {
 	
 	private PaymentDTO payment;
 	
-	
 	/**
 	 * Creates a new instance, representing a sale.
 	 */
@@ -29,8 +28,8 @@ public class Sale {
 		taxes = new Taxes();
 		items = new ArrayList<Item>();
 		runningTotal = new Amount(0);
-		change = new Change();
-		payment = new PaymentDTO();
+		change = new Change(payment, totalPrice);
+		payment = new PaymentDTO(null);
 	}
 	/**
 	 * Adds an {@link Item} to the {@link Sale} and updates the <code>runningTotal</code>.

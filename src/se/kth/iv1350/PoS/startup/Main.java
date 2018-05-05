@@ -1,6 +1,7 @@
 package se.kth.iv1350.PoS.startup;
 
 import se.kth.iv1350.PoS.controller.Controller;
+import se.kth.iv1350.PoS.demo.Demo;
 import se.kth.iv1350.PoS.view.View;
 import se.kth.iv1350.PoS.integration.*;
 
@@ -22,11 +23,12 @@ public class Main {
 	 * 
 	 */
 	public static void main(String[] args) {
+		
 		externalSystemsCreator = new ExternalSystemsCreator();
 		catalogCreator = new CatalogCreator();
 		controller = new Controller(catalogCreator,externalSystemsCreator);
 		view = new View(controller);
 		
-		view.trySale();
+		Demo.trySaleProcess(view);
 	}
 }

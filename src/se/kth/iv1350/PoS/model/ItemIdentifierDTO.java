@@ -2,12 +2,11 @@ package se.kth.iv1350.PoS.model;
 
 /**
  * Represents a value used for identifying an {@link Item}.
- * @author Marcus
  *
  */
 public class ItemIdentifierDTO { 
 
-	private int identifierValue;
+	private final int identifierValue;
 	
 	/**
 	 * Creates instance representing a value used for identifying an {@link Item}.

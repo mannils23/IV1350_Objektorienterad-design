@@ -15,7 +15,6 @@ public class View {
 	private Controller controller;
 	private SaleDTO saleInfo;
 	
-
 /**
  * Interacts with controller as an external system.
  * @param controller The <code>Controller</code> object to interact with.
@@ -25,45 +24,45 @@ public class View {
 	}
 	
 	/**
-	 * Runs simulated sale in the system as placeholder for the real view layer.
+	 * Starts a new {@link Sale} process.
 	 */
-	public void trySale() {
-		startNewSale();
-		enterItemToSaleByID(0);
-		enterItemToSaleByID(1);
-		enterItemToSaleByID(3);
-		noMoreItems();
-		pay();
-		
-		
-	}
-	
-	private void startNewSale() {
+	public void startNewSale() {
 		controller.startNewSale();
 	}
 	
-	private ItemIdentifierDTO createID(int value) {
-		ItemIdentifierDTO itemInfo = new ItemIdentifierDTO(value);
-		return itemInfo;
-	}
-	
-	private void enterItemToSaleByID(int IDnumber) {
+	/**
+	 * Tries to add an {@link Item} to the {@link Sale} based on ID-number
+	 * @param IDnumber The ID number for the <code>Item</code>.
+	 */
+	public void enterItemToSaleByID(int IDnumber) {
 		saleInfo = controller.enterItem(createID(IDnumber));
 		System.out.println("	    .ENTERING ITEMS.");
 		printSaleInfo();
 	}
 	
-	private void noMoreItems() {
+	/**
+	 * Indicates to the system no more items will be added to the {@link Sale}.
+	 */
+	public void noMoreItems() {
 		controller.indicateDone();
 		System.out.println("	   .ALL ITEMS ENTERED.");
 		printSaleInfo();
 	}
 	
-	private void pay() {
-		PaymentDTO payment = new PaymentDTO(new Amount(20));
+	/**
+	 * Finishes the {@link Sale} by sending a value representing the paid amount to the system.
+	 * @param paidValue The amount paid.
+	 */
+	public void pay(double paidValue) {
+		PaymentDTO payment = new PaymentDTO(new Amount(paidValue));
 		saleInfo = controller.pay(payment);
 		System.out.println("	   .PAYMENT RECIEVED.");
 		printSaleInfo();
+	}
+	
+	private ItemIdentifierDTO createID(int value) {
+		ItemIdentifierDTO itemInfo = new ItemIdentifierDTO(value);
+		return itemInfo;
 	}
 	
 	private void printSaleInfo() {

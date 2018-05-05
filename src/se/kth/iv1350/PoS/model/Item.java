@@ -23,14 +23,7 @@ public class Item {
 		this.description = description;
 		this.price = price;
 	}
-	/**
-	 * Creates instance of an {@link Item} with all fields null.
-	 */
-	public Item() {
-		identifier = null;
-		description = null;
-		price = null;
-	}
+	
 	/**
 	 * Returns the identifier for the <code>Item</code>.
 	 * @return The identifier for the <code>Item</code>.

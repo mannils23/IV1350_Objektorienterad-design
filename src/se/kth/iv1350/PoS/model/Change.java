@@ -6,7 +6,7 @@ package se.kth.iv1350.PoS.model;
  */
 public class Change {
 
-	private Amount change;
+	private final Amount change;
 
 	/**
 	 * Creates an instance of {@link Change} where the <code>Amount</code> value is 0.
@@ -21,11 +21,15 @@ public class Change {
 	 * @param totalPrice
 	 */
 	public Change(PaymentDTO payment, TotalPrice totalPrice) {
-		if(paymentLargerThanTotalPrice(payment, totalPrice)) {
-			change = calculateAmountDifference(payment, totalPrice);
-		}
-		else{
+		if(payment == null || totalPrice == null) {
 			change = new Amount(0);
+		} else {
+			if(paymentLargerThanTotalPrice(payment, totalPrice)) {
+				change = calculateAmountDifference(payment, totalPrice);
+			}
+			else{
+				change = new Amount(0);
+			}
 		}
 	}
 

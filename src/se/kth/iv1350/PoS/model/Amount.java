@@ -14,11 +14,15 @@ public class Amount {
 		
 	}
 	/**
-	 * Creates instance representing a given number or value.
+	 * Creates instance representing a given number or value. Negative input sets value to 0.
 	 * @param value The number or value to represent.
 	 */
 	public Amount(double value) {
-		this.value = value;
+		if(value < 0) {
+			value = 0;
+		} else {
+			this.value = value;
+		}
 	}
 	
 	/**
@@ -37,11 +41,14 @@ public class Amount {
 	}
 	
 	/**
-	 * Sets a the value of the {@link Amount} to the given value.
+	 * Sets a the value of the {@link Amount} to the given value. Negative input sets value to 0.
 	 * @param newValue The new value for the <code>Amount</code>.
 	 */
 	public void setValue(double newValue) {
-		value = newValue;
+		if(newValue < 0) {
+			value = 0;
+		} else {
+			value = newValue;
+		}
 	}
-
 }

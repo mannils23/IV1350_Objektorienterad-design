@@ -10,15 +10,15 @@ import se.kth.iv1350.PoS.integration.Printer;
  */
 public class Receipt {
 
-	private TotalPrice totalPrice;
+	private final TotalPrice totalPrice;
 
-	private Change change;
+	private final Change change;
 
-	private ArrayList items;
+	private final ArrayList items;
 
-	private PaymentDTO payment;
+	private final PaymentDTO payment;
 
-	private Printer printer;
+	private final Printer printer;
 
 	/**
 	 * Creates instance representing the {@link Sale} information for the {@link Receipt}.
@@ -36,6 +36,38 @@ public class Receipt {
 	 */
 	public void printReceipt() {
 		printer.printReceipt(this);
+	}
+	
+	/**
+	 * Returns the {@link TotalPrice} from the finished {@link Sale}.
+	 * @return The <code>TotalPrice</code>.
+	 */
+	public TotalPrice getTotalPrice() {
+		return totalPrice;
+	}
+	
+	/**
+	 * Returns the {@link Change} from the finished {@link Sale}.
+	 * @return The <code>Change</code>.
+	 */
+	public Change getChange() {
+		return change;
+	}
+	
+	/**
+	 * Returns the {@link Item}s from the finished {@link Salen}.
+	 * @return The <code>Item</code>s.
+	 */
+	public ArrayList<Item> getItems() {
+		return items;
+	}
+	
+	/**
+	 * Returns the {@link PaymentDTO} from the finished {@link Sale}.
+	 * @return The <code>PaymentDTO</code>.
+	 */
+	public PaymentDTO getPayment() {
+		return payment;
 	}
 
 }

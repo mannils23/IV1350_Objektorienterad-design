@@ -14,6 +14,7 @@ import se.kth.iv1350.PoS.model.ItemIdentifierDTO;
 public class ItemCatalogTest {
 
 	private ItemCatalog itemCatalog;
+
 	@Before
 	public void setUp() throws Exception {
 		itemCatalog = new ItemCatalog();
@@ -26,7 +27,7 @@ public class ItemCatalogTest {
 		ItemIdentifierDTO actual = foundItem.getIdentifier();
 		assertEquals("Found Item has wrong identifier.", expected, actual);
 	}
-	
+
 	@Test
 	public void testAddItem() throws Exception {
 		Item itemToAdd = createItem(40, "test item", 20);
@@ -34,26 +35,29 @@ public class ItemCatalogTest {
 		Item itemAdded = itemCatalog.getItem(new ItemIdentifierDTO(40));
 		assertEquals("Added item not same as item to add.", itemToAdd, itemAdded);
 	}
-	
+
 	@Test
 	public void testAddNullItem() throws Exception {
 		try {
 			Item nullItem = null;
 			itemCatalog.addItem(nullItem);
-		}catch(Exception e){
+		} catch (Exception e) {
 			return;
 		}
 		fail("null item added to ItemCatalog");
 	}
-	
+
 	@Test
 	public void testItemDontExist() {
 		ItemIdentifierDTO itemToFindID = new ItemIdentifierDTO(1000);
-		Item item = itemCatalog.getItem(itemToFindID);
-		boolean emptyItem = (item.getDescription() == null && item.getIdentifier() == null && item.getPrice() == null);
-		assertTrue("empty item not returned", emptyItem);
+		try {
+			Item item = itemCatalog.getItem(itemToFindID);
+		} catch (IllegalArgumentException e) {
+			return;
+		}
+		fail();
 	}
-	
+
 	private Item createItem(int idNumber, String desc, int itemPrice) {
 		ItemIdentifierDTO id = new ItemIdentifierDTO(idNumber);
 		Amount price = new Amount(itemPrice);

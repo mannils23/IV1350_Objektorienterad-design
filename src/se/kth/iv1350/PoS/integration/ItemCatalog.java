@@ -1,7 +1,11 @@
 package se.kth.iv1350.PoS.integration;
 
 import java.util.ArrayList;
-import se.kth.iv1350.PoS.model.*;
+import java.util.Optional;
+
+import se.kth.iv1350.PoS.model.Amount;
+import se.kth.iv1350.PoS.model.Item;
+import se.kth.iv1350.PoS.model.ItemIdentifierDTO;
 
 /**
  * Placeholder for the external system containing information about items.
@@ -30,13 +34,17 @@ public class ItemCatalog {
 	 * @return The <code>Item</code> specified.
 	 */
 	public Item getItem(ItemIdentifierDTO itemToFindID) {
-		for(Item itemInList : itemList) {
+		/*for(Item itemInList : itemList) {
 			if(matchesID(itemInList, itemToFindID)) {
 				return itemInList;
 			}
+		}*/
+		Optional <Item> item = itemList.stream().filter(itemInList -> matchesID(itemInList, itemToFindID)).findFirst();
+		if(item.isPresent()) {
+			return item.get();
+		} else {
+			throw new IllegalArgumentException();
 		}
-		Item emptyItem = new Item();
-		return emptyItem;
 	}
 	/**
 	 * Adds an <code>Item</code> to the catalog.
