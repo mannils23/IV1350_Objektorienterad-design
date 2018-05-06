@@ -13,12 +13,20 @@ public class Demo {
 	 */
 	public static void trySaleProcess(View view) {
 		view.startNewSale();
+		
+		System.out.println("DEMO MESSAGE: adding items to sale: normal \n");
 		view.enterItemToSaleByID(0);
-		view.enterItemToSaleByID(1);
+		view.enterItemToSaleByID(1);		// ADDING ITEMS
 		view.enterItemToSaleByID(3);
+		
+		System.out.println("DEMO MESSAGE: adding items to sale: item ID does not exist \n");
 		view.enterItemToSaleByID(-1);
-		view.enterItemToSaleByID(500);
+		view.enterItemToSaleByID(500);		// ADDING ITEMS BY NON-EXISTENT ID
+		
+		System.out.println("DEMO MESSAGE: indicate no more items \n");
 		view.noMoreItems();
+		
+		System.out.println("DEMO MESSAGE: send payment of 20 \n");
 		view.pay(20);
 	}
 }

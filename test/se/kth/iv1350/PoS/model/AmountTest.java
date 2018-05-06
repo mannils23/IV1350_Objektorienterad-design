@@ -2,8 +2,6 @@ package se.kth.iv1350.PoS.model;
 
 import static org.junit.Assert.assertEquals;
 
-import java.text.DecimalFormat;
-
 import org.junit.Before;
 import org.junit.Test;
 

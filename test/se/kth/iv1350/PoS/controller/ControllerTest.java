@@ -1,15 +1,16 @@
 package se.kth.iv1350.PoS.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import se.kth.iv1350.PoS.integration.CatalogCreator;
 import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
-import se.kth.iv1350.PoS.model.Amount;
-import se.kth.iv1350.PoS.model.PaymentDTO;
-import se.kth.iv1350.PoS.model.SaleDTO;
+import se.kth.iv1350.PoS.model.*;
 
 public class ControllerTest {
 	
@@ -25,7 +26,7 @@ public class ControllerTest {
 	}
 
 	@Test
-	public void payTest() {
+	public void testPay() {
 		PaymentDTO payment = new PaymentDTO(new Amount(10));
 		controller.indicateDone();
 		SaleDTO saleInfo = controller.pay(payment);
@@ -33,6 +34,19 @@ public class ControllerTest {
 		double expected = 10;
 		assertEquals(expected, actual, 0.0001);
 		
+	}
+	
+	@Test
+	public void testAddItem() {
+		ItemIdentifierDTO id = new ItemIdentifierDTO(5);
+		SaleDTO saleInfo = controller.enterItem(id);
+		ArrayList<Item> items = saleInfo.getItems();
+		for(Item item : items) {
+			if(item.getIdentifier().getIdentifierValue() == 5){
+				return;
+			}
+		}
+		fail("Item not found in list");
 	}
 
 }

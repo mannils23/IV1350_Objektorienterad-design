@@ -59,9 +59,9 @@ public class Controller {
 	}
 
 	/**
-	 * Returns the total price for the sale.
+	 * Indicates to the system the {@link Sale} is finished and returns sale information {@link SaleDTO}.
 	 * 
-	 * @return The total price.
+	 * @return The <code>SaleDTO</code>.
 	 */
 	public SaleDTO indicateDone() {
 		return sale.getSaleInformation();
