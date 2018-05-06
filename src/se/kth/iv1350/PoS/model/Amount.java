@@ -1,6 +1,6 @@
 package se.kth.iv1350.PoS.model;
 /**
- * Represents a number or a value.
+ * Represents a positive number or a value.
  *
  */
 public class Amount {
