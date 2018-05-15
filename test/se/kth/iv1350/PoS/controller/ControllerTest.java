@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import exception.ItemDoesNotExistException;
-import exception.OperationFailedException;
+import se.kth.iv1350.PoS.exception.ItemDoesNotExistException;
+import se.kth.iv1350.PoS.exception.OperationFailedException;
 import se.kth.iv1350.PoS.integration.CatalogCreator;
 import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
 import se.kth.iv1350.PoS.model.*;

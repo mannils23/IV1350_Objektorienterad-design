@@ -1,10 +1,14 @@
 package se.kth.iv1350.PoS.controller;
 
-import exception.ItemCatalogException;
-import exception.ItemDoesNotExistException;
-import exception.OperationFailedException;
+import java.util.ArrayList;
+import java.util.List;
+
+import se.kth.iv1350.PoS.exception.ItemCatalogException;
+import se.kth.iv1350.PoS.exception.ItemDoesNotExistException;
+import se.kth.iv1350.PoS.exception.OperationFailedException;
 import se.kth.iv1350.PoS.integration.*;
 import se.kth.iv1350.PoS.model.*;
+import se.kth.iv1350.PoS.view.TotalRevenueView;
 
 /**
  * The controller layer which is responsible for all interactions between the
@@ -20,6 +24,10 @@ public class Controller {
 	private Sale sale;
 
 	private Receipt receipt;
+	
+	private TotalRevenueView totalRevenueView;
+	
+	private List<SaleObserver> saleObservers = new ArrayList<>();
 
 	/**
 	 * Creates a new instance of Controller
@@ -33,13 +41,17 @@ public class Controller {
 		itemCatalog = catalogs.getItemCatalog();
 		externalSystems = externalSystemsCreator.getExternalSystems();
 	}
+	
+	public void addSaleObserver(SaleObserver obs) {
+		saleObservers.add(obs);
+	}
 
 	/**
 	 * Creates the <code>Sale</code> object representing the active sale.
 	 */
 	public void startNewSale() {
 		sale = new Sale();
-
+		sale.addSaleObservers(saleObservers);
 	}
 
 	/**

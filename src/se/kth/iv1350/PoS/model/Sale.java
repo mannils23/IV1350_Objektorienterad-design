@@ -10,6 +10,8 @@ import se.kth.iv1350.PoS.integration.*;
 public class Sale {
 
 	private ArrayList<Item> items;
+	
+	private List<SaleObserver> saleObservers = new ArrayList<>();
 
 	private Amount runningTotal;
 
@@ -30,6 +32,20 @@ public class Sale {
 		runningTotal = new Amount(0);
 		change = new Change(payment, totalPrice);
 		payment = new PaymentDTO(null);
+	}
+	
+	public void addSaleObserver(SaleObserver obs) {
+		saleObservers.add(obs);
+	}
+	
+	public void addSaleObservers(List<SaleObserver> saleObservers) {
+		this.saleObservers = saleObservers;
+	}
+	
+	private void notifyObservers() {
+		for(SaleObserver obs : saleObservers) {
+			obs.newAmount(calculateRevenue());
+		}
 	}
 	/**
 	 * Adds an {@link Item} to the {@link Sale} and updates the <code>runningTotal</code>.
@@ -75,6 +91,7 @@ public class Sale {
 	public void pay(PaymentDTO payment) {
 		this.payment = payment;
 		generateChange();
+		notifyObservers();
 	}
 	/**
 	 * Returns the {@link Change} of the current {@link Sale}.
@@ -100,6 +117,11 @@ public class Sale {
 	
 	private void generateChange() {
 		change = new Change(payment, totalPrice);
+	}
+	
+	private Amount calculateRevenue() {
+		Amount revenue = new Amount(payment.getAmount().getValue() - change.getChangeAmount().getValue());
+		return revenue;
 	}
 }
 	

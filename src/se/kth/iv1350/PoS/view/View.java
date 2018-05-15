@@ -3,11 +3,11 @@ package se.kth.iv1350.PoS.view;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
-import exception.ErrorMessageHandler;
-import exception.ItemDoesNotExistException;
-import exception.LogHandler;
-import exception.OperationFailedException;
 import se.kth.iv1350.PoS.controller.Controller;
+import se.kth.iv1350.PoS.exception.ErrorMessageHandler;
+import se.kth.iv1350.PoS.exception.ItemDoesNotExistException;
+import se.kth.iv1350.PoS.exception.LogHandler;
+import se.kth.iv1350.PoS.exception.OperationFailedException;
 import se.kth.iv1350.PoS.model.*;
 
 /**
@@ -28,6 +28,7 @@ public class View {
  */
 	public View(Controller controller) {
 		this.controller = controller;
+		this.controller.addSaleObserver(new TotalRevenueView());
 	}
 	
 	/**

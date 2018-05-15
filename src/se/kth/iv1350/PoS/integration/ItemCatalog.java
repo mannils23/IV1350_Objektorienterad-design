@@ -3,8 +3,8 @@ package se.kth.iv1350.PoS.integration;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import exception.ItemCatalogException;
-import exception.ItemDoesNotExistException;
+import se.kth.iv1350.PoS.exception.ItemCatalogException;
+import se.kth.iv1350.PoS.exception.ItemDoesNotExistException;
 import se.kth.iv1350.PoS.model.Amount;
 import se.kth.iv1350.PoS.model.Item;
 import se.kth.iv1350.PoS.model.ItemIdentifierDTO;

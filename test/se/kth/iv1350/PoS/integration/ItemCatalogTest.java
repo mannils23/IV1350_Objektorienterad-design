@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import exception.ItemDoesNotExistException;
+import se.kth.iv1350.PoS.exception.ItemDoesNotExistException;
 import se.kth.iv1350.PoS.model.Amount;
 import se.kth.iv1350.PoS.model.Item;
 import se.kth.iv1350.PoS.model.ItemIdentifierDTO;

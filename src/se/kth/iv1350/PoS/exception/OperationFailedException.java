@@ -1,4 +1,4 @@
-package exception;
+package se.kth.iv1350.PoS.exception;
 
 public class OperationFailedException extends Exception{
 	

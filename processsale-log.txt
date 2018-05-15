@@ -1,24 +1,24 @@
-15 maj 2018 16:09:11, Exception was thrown: Unable to find -1, since it is not in the catalog.
-exception.ItemDoesNotExistException: Unable to find -1, since it is not in the catalog.
+15 maj 2018 17:38:26, Exception was thrown: Unable to find -1, since it is not in the catalog.
+se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find -1, since it is not in the catalog.
 	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:48)
-	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:56)
-	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:52)
+	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
+	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
 	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:24)
 	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
-15 maj 2018 16:09:11, Exception was thrown: Unable to find 500, since it is not in the catalog.
-exception.ItemDoesNotExistException: Unable to find 500, since it is not in the catalog.
+15 maj 2018 17:38:26, Exception was thrown: Unable to find 500, since it is not in the catalog.
+se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find 500, since it is not in the catalog.
 	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:48)
-	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:56)
-	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:52)
+	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
+	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
 	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:25)
 	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
-15 maj 2018 16:09:11, Exception was thrown: Could not enter item.
-exception.OperationFailedException: Could not enter item.
-	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:62)
-	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:52)
+15 maj 2018 17:38:26, Exception was thrown: Could not enter item.
+se.kth.iv1350.PoS.exception.OperationFailedException: Could not enter item.
+	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:74)
+	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
 	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:37)
 	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
-Caused by: exception.ItemCatalogException: Database failure.
+Caused by: se.kth.iv1350.PoS.exception.ItemCatalogException: Database failure.
 	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:42)
-	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:56)
+	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	... 3 more
