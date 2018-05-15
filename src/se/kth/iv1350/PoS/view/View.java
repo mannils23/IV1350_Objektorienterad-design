@@ -1,7 +1,12 @@
 package se.kth.iv1350.PoS.view;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 
+import exception.ErrorMessageHandler;
+import exception.ItemDoesNotExistException;
+import exception.LogHandler;
+import exception.OperationFailedException;
 import se.kth.iv1350.PoS.controller.Controller;
 import se.kth.iv1350.PoS.model.*;
 
@@ -14,6 +19,8 @@ public class View {
 
 	private Controller controller;
 	private SaleDTO saleInfo;
+	private ErrorMessageHandler errorMsgHandler;
+	private LogHandler logger;
 	
 /**
  * Interacts with controller as an external system.
@@ -28,6 +35,12 @@ public class View {
 	 */
 	public void startNewSale() {
 		controller.startNewSale();
+		errorMsgHandler = new ErrorMessageHandler();
+		try {
+			logger = new LogHandler();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
@@ -35,9 +48,17 @@ public class View {
 	 * @param IDnumber The ID number for the <code>Item</code>.
 	 */
 	public void enterItemToSaleByID(int IDnumber) {
-		saleInfo = controller.enterItem(createID(IDnumber));
-		System.out.println("	    .ENTERING ITEMS.");
-		printSaleInfo();
+		try {
+			saleInfo = controller.enterItem(createID(IDnumber));
+			System.out.println("	    .ENTERING ITEMS.");
+			printSaleInfo();
+			
+		} catch (ItemDoesNotExistException exc) {
+			handleException("Item with ID " + exc.getInvalidIdentifier().getIdentifierValue() + " does not exist.", exc);
+	
+		} catch(Exception exc){
+			handleException("Something went wrong while entering item, please try again", exc);
+		}
 	}
 	
 	/**
@@ -79,6 +100,11 @@ public class View {
 		System.out.println("	Paid: " + saleInfo.getPayment().getAmount().getValue());
 		System.out.println("	Change: " + saleInfo.getChange().getChangeAmount().getValue());
 		System.out.println();
+	}
+	
+	private void handleException(String uiMsg, Exception exc) {
+		errorMsgHandler.showErrorMsg(uiMsg);
+		logger.logException(exc);
 	}
 
 }

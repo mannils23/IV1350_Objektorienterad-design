@@ -1,5 +1,8 @@
 package se.kth.iv1350.PoS.controller;
 
+import exception.ItemCatalogException;
+import exception.ItemDoesNotExistException;
+import exception.OperationFailedException;
 import se.kth.iv1350.PoS.integration.*;
 import se.kth.iv1350.PoS.model.*;
 
@@ -40,22 +43,24 @@ public class Controller {
 	}
 
 	/**
-	 * Tries to enter specified <code>Item</code> to the current sale.
+	 * Tries to enter the <code>Item</code> belonging to the specified identifier to the current sale.
 	 * 
-	 * @param itemIdentifier
-	 *            Specifies the <code>Item</code> object to add.
+	 * @param itemIdentifier Specifies the <code>Item</code> object to add.
 	 * @return Returns information about a the sale as a <code>SaleDTO</code>
 	 *         object.
+	 * @throws OperationFailedException if item could not be entered for any other reason than the item not existing.
+	 * @throws ItemDoesNotExistException if the item to enter does not exist.
 	 */
-	public SaleDTO enterItem(ItemIdentifierDTO itemIdentifier) {
+	public SaleDTO enterItem(ItemIdentifierDTO itemIdentifier) throws OperationFailedException, ItemDoesNotExistException {
 		try {
 			Item item = itemCatalog.getItem(itemIdentifier);
 			sale.addItem(item);
-		} catch (IllegalArgumentException e) {
-			System.err.println("Warning: Item with ID:" + itemIdentifier.getIdentifierValue() + " does not exist.");
-		}
-		SaleDTO saleInfo = sale.getSaleInformation();
-		return saleInfo;
+			SaleDTO saleInfo = sale.getSaleInformation();
+			return saleInfo;
+			
+		} catch(ItemCatalogException catalogExc){
+			throw new OperationFailedException("Could not enter item.", catalogExc);
+		} 
 	}
 
 	/**

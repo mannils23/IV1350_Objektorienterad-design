@@ -3,6 +3,8 @@ package se.kth.iv1350.PoS.integration;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import exception.ItemCatalogException;
+import exception.ItemDoesNotExistException;
 import se.kth.iv1350.PoS.model.Amount;
 import se.kth.iv1350.PoS.model.Item;
 import se.kth.iv1350.PoS.model.ItemIdentifierDTO;
@@ -20,7 +22,6 @@ public class ItemCatalog {
 	 * Creates an instance of ItemCatalog.
 	 * When created, fills with <code>Item</code> objects.
 	 * (identifier(i), "item" + i, price(i + 1)
-	 * @throws Exception 
 	 */
 	public ItemCatalog() {
 		itemList = new ArrayList<Item>();
@@ -28,33 +29,32 @@ public class ItemCatalog {
 	}
 	
 	/**
-	 * Tries to return the <code>Item</code> with the specified <code>IdentidierDTO</code>.
-	 * Failing returns an <code>Item</code> with null fields.
+	 * Tries to return the <code>Item</code> with the specified <code>IdentifierDTO</code>.
+	 * If item is not found, throws {@link ItemDoesNotExistException}.
+	 * 
 	 * @param itemIdentifier Specifies what <code>Item</code> to get.
 	 * @return The <code>Item</code> specified.
+	 * @throws ItemDoesNotExistException if the item to get does not exist.
+	 * @throws ItemCatalogException if the database call failed.
 	 */
-	public Item getItem(ItemIdentifierDTO itemToFindID) {
-		/*for(Item itemInList : itemList) {
-			if(matchesID(itemInList, itemToFindID)) {
-				return itemInList;
+	public Item getItem(ItemIdentifierDTO itemToFindID) throws ItemDoesNotExistException {
+		if(itemToFindID.getIdentifierValue() == 18) {
+			throw new ItemCatalogException("Database failure.");
+		}else {
+			Optional <Item> item = itemList.stream().filter(itemInList -> matchesID(itemInList, itemToFindID)).findFirst();
+			if(item.isPresent()) {
+				return item.get();
+			} else {
+				throw new ItemDoesNotExistException(itemToFindID);
 			}
-		}*/
-		Optional <Item> item = itemList.stream().filter(itemInList -> matchesID(itemInList, itemToFindID)).findFirst();
-		if(item.isPresent()) {
-			return item.get();
-		} else {
-			throw new IllegalArgumentException();
 		}
 	}
+	
 	/**
 	 * Adds an <code>Item</code> to the catalog.
 	 * @param item The <code>Item</code> to add.
-	 * @throws Exception 
 	 */
-	public void addItem(Item item) throws Exception {
-		if(item == null) {
-			throw new IllegalArgumentException("null item");
-		}
+	public void addItem(Item item) {
 		itemList.add(item);
 	}
 	
@@ -68,9 +68,7 @@ public class ItemCatalog {
 			ItemIdentifierDTO identifier = new ItemIdentifierDTO(i);
 			Amount price = new Amount(i + 1);
 			Item itemToAdd = new Item(identifier, "item" + i, price);
-			try {
-				addItem(itemToAdd);
-			}catch (Exception e) {}
+			addItem(itemToAdd);
 		}
 	}
 }

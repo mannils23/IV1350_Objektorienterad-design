@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
+import exception.ItemDoesNotExistException;
+import exception.OperationFailedException;
 import se.kth.iv1350.PoS.integration.CatalogCreator;
 import se.kth.iv1350.PoS.integration.ExternalSystemsCreator;
 import se.kth.iv1350.PoS.model.*;
@@ -39,7 +41,15 @@ public class ControllerTest {
 	@Test
 	public void testAddItem() {
 		ItemIdentifierDTO id = new ItemIdentifierDTO(5);
-		SaleDTO saleInfo = controller.enterItem(id);
+		SaleDTO saleInfo = null;
+		try {
+			saleInfo = controller.enterItem(id);
+		} catch (OperationFailedException e) {
+			fail("Exception was thronw when it shouldn't.");
+			
+		} catch (ItemDoesNotExistException e) {
+			fail("Exception was thronw when it shouldn't.");
+		}
 		ArrayList<Item> items = saleInfo.getItems();
 		for(Item item : items) {
 			if(item.getIdentifier().getIdentifierValue() == 5){

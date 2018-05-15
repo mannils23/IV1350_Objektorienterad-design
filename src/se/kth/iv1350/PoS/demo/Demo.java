@@ -12,6 +12,7 @@ public class Demo {
 	 * Runs simulated sale in the system as placeholder for the real view layer.
 	 */
 	public static void trySaleProcess(View view) {
+		System.out.println("DEMO1: Process Sale \n");
 		view.startNewSale();
 		
 		System.out.println("DEMO MESSAGE: adding items to sale: normal \n");
@@ -28,5 +29,11 @@ public class Demo {
 		
 		System.out.println("DEMO MESSAGE: send payment of 20 \n");
 		view.pay(20);
+		
+		System.out.println("DEMO1 Finished.");
+		System.out.println("DEMO2: Database Failure \n");
+		
+		System.out.println("DEMO MESSAGE: Adding item demonstrating database failure \n");
+		view.enterItemToSaleByID(18);
 	}
 }
