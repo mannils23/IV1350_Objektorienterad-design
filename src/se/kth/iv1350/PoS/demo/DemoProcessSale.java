@@ -6,7 +6,7 @@ import se.kth.iv1350.PoS.view.View;
  * Demonstrates the public interface of the Point-of-Sale system
  *
  */
-public class Demo {
+public class DemoProcessSale {
 	
 	/**
 	 * Runs simulated sale in the system as placeholder for the real view layer.

@@ -1,24 +1,24 @@
-15 maj 2018 17:38:26, Exception was thrown: Unable to find -1, since it is not in the catalog.
+16 maj 2018 18:03:24, Exception was thrown: Unable to find -1, since it is not in the catalog.
 se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find -1, since it is not in the catalog.
-	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:48)
+	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:49)
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
-	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:24)
-	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
-15 maj 2018 17:38:26, Exception was thrown: Unable to find 500, since it is not in the catalog.
+	at se.kth.iv1350.PoS.demo.DemoProcessSale.trySaleProcess(DemoProcessSale.java:24)
+	at se.kth.iv1350.PoS.startup.Main.main(Main.java:33)
+16 maj 2018 18:03:24, Exception was thrown: Unable to find 500, since it is not in the catalog.
 se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find 500, since it is not in the catalog.
-	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:48)
+	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:49)
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
-	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:25)
-	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
-15 maj 2018 17:38:26, Exception was thrown: Could not enter item.
+	at se.kth.iv1350.PoS.demo.DemoProcessSale.trySaleProcess(DemoProcessSale.java:25)
+	at se.kth.iv1350.PoS.startup.Main.main(Main.java:33)
+16 maj 2018 18:03:24, Exception was thrown: Could not enter item.
 se.kth.iv1350.PoS.exception.OperationFailedException: Could not enter item.
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:74)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
-	at se.kth.iv1350.PoS.demo.Demo.trySaleProcess(Demo.java:37)
-	at se.kth.iv1350.PoS.startup.Main.main(Main.java:32)
+	at se.kth.iv1350.PoS.demo.DemoProcessSale.trySaleProcess(DemoProcessSale.java:37)
+	at se.kth.iv1350.PoS.startup.Main.main(Main.java:33)
 Caused by: se.kth.iv1350.PoS.exception.ItemCatalogException: Database failure.
-	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:42)
+	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:43)
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	... 3 more

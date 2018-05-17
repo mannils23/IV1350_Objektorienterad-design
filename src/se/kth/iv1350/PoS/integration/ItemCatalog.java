@@ -31,6 +31,7 @@ public class ItemCatalog {
 	/**
 	 * Tries to return the <code>Item</code> with the specified <code>IdentifierDTO</code>.
 	 * If item is not found, throws {@link ItemDoesNotExistException}.
+	 * If something else goes wrong, throws {@link ItemCatalogException}
 	 * 
 	 * @param itemIdentifier Specifies what <code>Item</code> to get.
 	 * @return The <code>Item</code> specified.
