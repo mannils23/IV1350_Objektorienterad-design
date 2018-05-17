@@ -19,7 +19,7 @@ public class ItemCatalogTest {
 
 	@Before
 	public void setUp() throws Exception {
-		itemCatalog = new ItemCatalog();
+		itemCatalog = ItemCatalog.getItemCatalog();
 	}
 
 	@Test

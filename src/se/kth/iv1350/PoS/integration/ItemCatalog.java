@@ -15,6 +15,8 @@ import se.kth.iv1350.PoS.model.ItemIdentifierDTO;
  *
  */
 public class ItemCatalog {
+	
+	private static final ItemCatalog ITEM_CATALOG = new ItemCatalog();
 
 	private ArrayList<Item> itemList;
 	
@@ -23,9 +25,13 @@ public class ItemCatalog {
 	 * When created, fills with <code>Item</code> objects.
 	 * (identifier(i), "item" + i, price(i + 1)
 	 */
-	public ItemCatalog() {
+	private ItemCatalog() {
 		itemList = new ArrayList<Item>();
 		addPredefinedItems();
+	}
+	
+	public static ItemCatalog getItemCatalog() {
+		return ITEM_CATALOG;
 	}
 	
 	/**

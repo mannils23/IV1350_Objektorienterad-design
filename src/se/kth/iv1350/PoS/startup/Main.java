@@ -33,10 +33,10 @@ public class Main {
 		DemoProcessSale.trySaleProcess(view);
 		
 		/*				DEMO2				*/
-		/*externalSystemsCreator = new ExternalSystemsCreator();
+		externalSystemsCreator = new ExternalSystemsCreator();
 		catalogCreator = new CatalogCreator();
 		controller = new Controller(catalogCreator,externalSystemsCreator);
 		view = new View(controller);
-		DemoException.trySaleProcess(view);*/
+		DemoException.trySaleProcess(view);
 	}
 }

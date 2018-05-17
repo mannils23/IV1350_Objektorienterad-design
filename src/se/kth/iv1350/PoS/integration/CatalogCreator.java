@@ -13,7 +13,7 @@ public class CatalogCreator {
 	 * Creates a new instance with classes handling external catalogs.
 	 */
 	public CatalogCreator() {
-		itemCatalog = new ItemCatalog();
+		itemCatalog = ItemCatalog.getItemCatalog();
 	}
 	
 	/**
