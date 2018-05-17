@@ -48,12 +48,7 @@ public class ItemCatalog {
 		if(itemToFindID.getIdentifierValue() == 18) {
 			throw new ItemCatalogException("Database failure.");
 		}else {
-			Optional <Item> item = itemList.stream().filter(itemInList -> matchesID(itemInList, itemToFindID)).findFirst();
-			if(item.isPresent()) {
-				return item.get();
-			} else {
-				throw new ItemDoesNotExistException(itemToFindID);
-			}
+			return new IDMatch().match(itemToFindID, itemList);
 		}
 	}
 	

@@ -1,18 +1,20 @@
-17 maj 2018 12:34:24, Exception was thrown: Unable to find -1, since it is not in the catalog.
+17 maj 2018 18:32:51, Exception was thrown: Unable to find -1, since it is not in the catalog.
 se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find -1, since it is not in the catalog.
-	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:55)
+	at se.kth.iv1350.PoS.integration.IDMatch.match(IDMatch.java:21)
+	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:51)
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
 	at se.kth.iv1350.PoS.demo.DemoException.trySaleProcess(DemoException.java:23)
 	at se.kth.iv1350.PoS.startup.Main.main(Main.java:40)
-17 maj 2018 12:34:24, Exception was thrown: Unable to find 500, since it is not in the catalog.
+17 maj 2018 18:32:51, Exception was thrown: Unable to find 500, since it is not in the catalog.
 se.kth.iv1350.PoS.exception.ItemDoesNotExistException: Unable to find 500, since it is not in the catalog.
-	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:55)
+	at se.kth.iv1350.PoS.integration.IDMatch.match(IDMatch.java:21)
+	at se.kth.iv1350.PoS.integration.ItemCatalog.getItem(ItemCatalog.java:51)
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:68)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
 	at se.kth.iv1350.PoS.demo.DemoException.trySaleProcess(DemoException.java:24)
 	at se.kth.iv1350.PoS.startup.Main.main(Main.java:40)
-17 maj 2018 12:34:24, Exception was thrown: Could not enter item.
+17 maj 2018 18:32:51, Exception was thrown: Could not enter item.
 se.kth.iv1350.PoS.exception.OperationFailedException: Could not enter item.
 	at se.kth.iv1350.PoS.controller.Controller.enterItem(Controller.java:74)
 	at se.kth.iv1350.PoS.view.View.enterItemToSaleByID(View.java:53)
